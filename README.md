@@ -1,0 +1,1 @@
+Dataset - https://huggingface.co/datasets/ruSpamModels/russian-spam-detection
