@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException, status
 from pydantic import BaseModel
 from typing import List
-import inference_model
+from src import inference_model
 
 app = FastAPI(title="Spam Detector API")
 

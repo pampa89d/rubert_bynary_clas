@@ -1,0 +1,40 @@
+
+services:
+  spam-api:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    container_name: spam_detector_service
+    ports:
+      - '8000:8000'
+    # создает "туннель" между файловой системой в WSL (только для локальных файлов)
+    # и файловой системой контейнера
+    volumes:
+      - ./models:/app/models
+      - ./src:/app/src
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: ["nvidia-compute"]
+              driver: nvidia
+    restart: always
+    networks:
+      - backend_spam_net
+  
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: spam_streamlit
+    ports:
+      - '8501:8501'
+    depends_on:
+      - spam-api
+    restart: always
+    networks:
+      - backend_spam_net
+
+networks:
+  backend_spam_net:
+    driver: bridge
