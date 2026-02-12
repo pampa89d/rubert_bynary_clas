@@ -2,5 +2,6 @@
 После классификации тексту присваивается метка, где 1 - это спам, 2 - нет спама.
 
 Проект реализован на базе библиотеки FastAPI с запуском в Docker контенере.
+Схема архитектуры проекта отображена на изображении "архитектура сервиса.png" хранаящимся в папке Images.
 
-Dataset - https://huggingface.co/datasets/ruSpamModels/russian-spam-detection
+Датасет для обучения - https://huggingface.co/datasets/ruSpamModels/russian-spam-detection
